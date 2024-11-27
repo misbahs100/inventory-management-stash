@@ -27,7 +27,6 @@ export const metadata: Metadata = {
 export default async function SignInPage(): Promise<JSX.Element> {
   const session = await auth()
   if (session) redirect(DEFAULT_SIGNIN_REDIRECT)
-
   return (
     <div className="flex h-auto min-h-screen w-full items-center justify-center">
       <Card className="max-sm:flex  max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none sm:min-w-[370px] sm:max-w-[368px]">

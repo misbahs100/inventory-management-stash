@@ -24,11 +24,14 @@ import { ResetPasswordEmail } from "@/components/emails/reset-password-email"
 export async function signUpWithPassword(
   rawInput: SignUpWithPasswordFormInput
 ): Promise<"invalid-input" | "exists" | "success" | "error"> {
+  console.log("hello")
   const validatedInput = signUpWithPasswordSchema.safeParse(rawInput)
   if (!validatedInput.success) return "invalid-input"
 
   try {
     const user = await getUserByEmail(validatedInput.data.email)
+    if(user) console.log("the user exists already")
+      else console.log("new user")
     if (user) return "exists"
 
     const passwordHash = await bcryptjs.hash(validatedInput.data.password, 10)

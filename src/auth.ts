@@ -39,6 +39,7 @@ export const {
 
       const existingUser = await getUserById(user.id)
       return !existingUser?.emailVerified ? false : true
+      
     },
 
     async jwt({ token }) {
